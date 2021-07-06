@@ -16,4 +16,4 @@ lint: |
   yamllint .
   ansible-lint .
 verifier:
-  name: ansible
+  name: testinfra
