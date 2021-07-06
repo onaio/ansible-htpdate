@@ -8,7 +8,7 @@ on:
 
 defaults:
   run:
-    working-directory: "${{ github.repository }}"
+    working-directory: "ansible-htpdate"
 
 jobs:
   lint:
@@ -18,7 +18,7 @@ jobs:
       - name: Check out the codebase.
         uses: actions/checkout@v2
         with:
-          path: "${{ github.repository }}"
+          path: "ansible-htpdate"
 
       - name: Set up Python 3.
         uses: actions/setup-python@v2
@@ -26,7 +26,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install test dependencies.
-        run: pip3 install yamllint
+        run: pip3 install molecule[lint]
 
       - name: Lint code.
         run: |
@@ -48,7 +48,7 @@ jobs:
       - name: Check out the codebase.
         uses: actions/checkout@v2
         with:
-          path: "${{ github.repository }}"
+          path: "ansible-htpdate"
 
       - name: Set up Python 3.
         uses: actions/setup-python@v2
@@ -56,7 +56,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install test dependencies.
-        run: pip3 install ansible molecule[docker] docker
+        run: pip3 install ansible molecule[docker] docker molecule[test]
 
       - name: Run Molecule tests.
         run: molecule test
