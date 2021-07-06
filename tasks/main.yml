@@ -17,6 +17,11 @@
     htpdate_daemon: "{{ __htpdate_daemon }}"
   when: htpdate_daemon is not defined
 
+- name: Update Debian package repositories
+  apt:
+    update_cache: true
+  when: ansible_os_family == "Debian"
+
 - name: Ensure htpdate package is installed
   package:
     name: "{{ htpdate_package }}"
