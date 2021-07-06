@@ -1,2 +1,19 @@
 ---
-# defaults file for role
+htpdate_enabled: true
+
+# htpdate_package: htpdate
+# htpdate_daemon: htpdate
+# htpdate_env_file: /etc/default/htpdate
+
+htpdate_manage_env: false
+
+# vars to configure environment variables
+
+htpdate_htp_daemon: "no"
+htpdate_htp_ifup: "no"
+
+htpdate_use_proxy: false
+htpdate_htp_proxy: ""
+
+htpdate_htp_servers: "www.pool.ntp.org www.ntp.br www.wikipedia.org"
+htpdate_htp_options: "-D -s"

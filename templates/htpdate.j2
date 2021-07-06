@@ -1,0 +1,24 @@
+{{ ansible_managed | comment }}
+
+# htpdate will run on system boot as daemon and at every network restart
+# (IF UP). However you can disable each one uncommenting the following lines.
+HTP_DAEMON={{ htpdate_htp_daemon }}
+HTP_IFUP={{ htpdate_htp_ifup }}
+
+# If you have a HTTP proxy, uncomment the following line and change the
+# values.
+{% if htpdate_use_proxy %}
+# HTP_PROXY={{ htpdate_htp_proxy }}
+{% else %}
+# HTP_PROXY="-P myproxy-xyz.com:8080"
+{% endif %}
+
+# In the next line you should put HTTP servers. Note that htpdate uses
+# the timestamps extracted from headers to synchronize the time. You
+# must to use reliable servers only. Remember: you can use any site, not
+# specifics NTP site only.
+HTP_SERVERS={{ htpdate_htp_servers | quote }}
+
+# The general options can be viewed with '$ htpdate -h'. However, you can
+# keep the current options, that works fine.
+HTP_OPTIONS={{ htpdate_htp_options | quote }}

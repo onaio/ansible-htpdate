@@ -1,0 +1,4 @@
+---
+__htpdate_package: htpdate
+__htpdate_daemon: htpdate
+__htpdate_env_file: /etc/default/htpdate
