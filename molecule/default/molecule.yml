@@ -4,11 +4,13 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: ansible-role-ubuntu-18.04
-    image: solita/ubuntu-systemd:18.04
-    dockerfile: Dockerfile.j2
+  - name: instance
+    image: "geerlingguy/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
-    command: /sbin/init
+    pre_build_image: true
 provisioner:
   name: ansible
 lint: |
